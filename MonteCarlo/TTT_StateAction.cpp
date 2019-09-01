@@ -1,15 +1,15 @@
-#include "StateAction.h"
-#include "TicTacToe.h"
+#include "TTT_StateAction.h"
+#include "TTT_TicTacToe.h"
 
-bool StateAction::Pred::operator()(const StateAction& lhs, const StateAction& rhs) const {
+bool TTT_StateAction::Pred::operator()(const TTT_StateAction& lhs, const TTT_StateAction& rhs) const {
 	return (lhs.action == rhs.action && (lhs.state) == (rhs.state));
 }
 
-size_t StateAction::Hash::operator()(const StateAction& sa) const {
+size_t TTT_StateAction::Hash::operator()(const TTT_StateAction& sa) const {
 	size_t s = 0;
 	size_t a = sa.action;
 
-	const TicTacToe& b = sa.state;
+	const TTT_TicTacToe& b = sa.state;
 
 	/*for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; ++j) {
@@ -31,17 +31,17 @@ size_t StateAction::Hash::operator()(const StateAction& sa) const {
 			//number &= ~(1UL << n);
 			
 			switch (b.board[i][j]) {
-			case X:
+			case TTT_TicTacToe::Piece::X:
 				//10
 				s |= 1UL << (n * 2 + 1);
 				s &= ~(1UL << (n*2));
 				break;
-			case O:
+			case TTT_TicTacToe::Piece::O:
 				//01
 				s &= 1UL << (n * 2 + 1);
 				s |= ~(1UL << (n * 2));
 				break;
-			case NONE:
+			case TTT_TicTacToe::Piece::NONE:
 				//00
 				s &= 1UL << (n * 2 + 1);
 				s &= ~(1UL << (n * 2));

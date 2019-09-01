@@ -13,30 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\TicTacToe">
+      <UniqueIdentifier>{3c3961ca-7703-429b-9574-cf0a1df6f1b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TicTacToe">
+      <UniqueIdentifier>{15c7ebf1-00a6-4de9-850e-adc307c0d7ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checkers">
+      <UniqueIdentifier>{ec614dc4-907d-4185-9a10-84806d753220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Checkers">
+      <UniqueIdentifier>{26582809-aa5f-40ee-8278-dda12cfb5010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StateAction.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="TTT_StateAction.h">
+      <Filter>Header Files\TicTacToe</Filter>
     </ClInclude>
-    <ClInclude Include="TicTacToe.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="TTT_TicTacToe.h">
+      <Filter>Header Files\TicTacToe</Filter>
     </ClInclude>
-    <ClInclude Include="Trainer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="TTT_Trainer.h">
+      <Filter>Header Files\TicTacToe</Filter>
+    </ClInclude>
+    <ClInclude Include="Check_Checkers.h">
+      <Filter>Header Files\Checkers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TicTacToe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Trainer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TTT_StateAction.cpp">
+      <Filter>Source Files\TicTacToe</Filter>
     </ClCompile>
-    <ClCompile Include="StateAction.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TTT_TicTacToe.cpp">
+      <Filter>Source Files\TicTacToe</Filter>
+    </ClCompile>
+    <ClCompile Include="TTT_Trainer.cpp">
+      <Filter>Source Files\TicTacToe</Filter>
+    </ClCompile>
+    <ClCompile Include="Check_Checkers.cpp">
+      <Filter>Source Files\Checkers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,18 +2,19 @@
 
 #include <vector>
 
-enum Piece {
-	NONE, X, O
-};
 
-class TicTacToe
+
+class TTT_TicTacToe
 {
 public:
-	
-	TicTacToe() {
+	enum Piece {
+		NONE, X, O
+	};
+
+	TTT_TicTacToe() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				board[i][j] = Piece::NONE;
+				board[i][j] = TTT_TicTacToe::Piece::NONE;
 			}
 		}
 	}
@@ -31,7 +32,7 @@ public:
 
 	void randomMove();
 
-	bool operator==(const TicTacToe& rhs) const;
+	bool operator==(const TTT_TicTacToe& rhs) const;
 
 };
 

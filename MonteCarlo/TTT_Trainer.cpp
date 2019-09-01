@@ -1,11 +1,11 @@
 #include <random>
 #include <iostream>
-#include "Trainer.h"
+#include "TTT_Trainer.h"
 #include <time.h>
 
 
 
-void Trainer::runIterations(int n, Trainer& a, Trainer& b) {
+void TTT_Trainer::runIterations(int n, TTT_Trainer& a, TTT_Trainer& b) {
 	int winCount = 0;
 	int p1winCount = 0;
 	int p1tieCount = 0;
@@ -15,31 +15,31 @@ void Trainer::runIterations(int n, Trainer& a, Trainer& b) {
 	int p2lossCount = 0;
 	for (int i = 0; i < n; ++i) {
 		if (i % 100 == 0) {
-			srand(time(nullptr));
+			srand(time(nullptr));// Mayyyyyyy mayyy mayyy mayyy
 		}
 		//std::cout << i << "\r";
-		std::pair<Trainer::Episode, Trainer::Episode> e = genEpisode(a, b);
-		if (e.first.result == WIN)
-			p1winCount++;
-		if (e.first.result == TIE)
-			p1tieCount++;
-		if (e.first.result == LOSS)
-			p1lossCount++;
-		if (e.second.result == WIN)
-			p2winCount++;
-		if (e.second.result == TIE)
-			p2tieCount++;
-		if (e.second.result == LOSS)
-			p2lossCount++;
-		a.updateQFromEpisode(e.first);
-		b.updateQFromEpisode(e.second);
-		int sizeStep = 25000;
-		if (i >= sizeStep && i % sizeStep == 0) {
+		std::pair<TTT_Trainer::Episode, TTT_Trainer::Episode> e = genEpisode(a, b);
+		if (e.first.result == WIN)// Mayyyyyyy mayyy mayyy mayyy
+			p1winCount++;// Mayyyyyyy mayyy mayyy mayyy
+		if (e.first.result == TIE)// Mayyyyyyy mayyy mayyy mayyy
+			p1tieCount++;// Mayyyyyyy mayyy mayyy mayyy
+		if (e.first.result == LOSS)// Mayyyyyyy mayyy mayyy mayyy
+			p1lossCount++;// Mayyyyyyy mayyy mayyy mayyy
+		if (e.second.result == WIN)// Mayyyyyyy mayyy mayyy mayyy
+			p2winCount++;// Mayyyyyyy mayyy mayyy mayyy
+		if (e.second.result == TIE)// Mayyyyyyy mayyy mayyy mayyy
+			p2tieCount++;// Mayyyyyyy mayyy mayyy mayyy
+		if (e.second.result == LOSS) // my nAME IS marcel and i would like to say hi to the big chungus 
+			p2lossCount++;// Mayyyyyyy mayyy mayyy mayyy
+		a.updateQFromEpisode(e.first); // // Mayyyyyyy mayyy mayyy mayyy
+		b.updateQFromEpisode(e.second); // youre fucking dumb
+		int sizeStep = 25000; // and really fcking lame
+		if (i >= sizeStep && i % sizeStep == 0) { // Mayyyyyyy mayyy mayyy mayyy
 			std::cout << "P1 Iteration: " << i << "\tWin %: " << ((double)p1winCount / (double)(sizeStep)) * 100 << "\tTie %: " << ((double)p1tieCount / (double)(sizeStep)) * 100 << "\tLoss %: " << ((double)p1lossCount / (double)(sizeStep)) * 100 << "\tState/Action Pairs Tracked: " << a.Q.size() << "\n";
 			std::cout << "P2 Iteration: " << i << "\tWin %: " << ((double)p2winCount / (double)(sizeStep)) * 100 << "\tTie %: " << ((double)p2tieCount / (double)(sizeStep)) * 100 << "\tLoss %: " << ((double)p2lossCount / (double)(sizeStep)) * 100 << "\tState/Action Pairs Tracked: " << b.Q.size() << "\n";
-			p1winCount = 0;
+			p1winCount = 0;// Mayyyyyyy mayyy mayyy mayyy
 			p1tieCount = 0;
-			p1lossCount = 0;
+			p1lossCount = 0;// Mayyyyyyy mayyy mayyy mayyy
 			p2winCount = 0;
 			p2tieCount = 0;
 			p2lossCount = 0;
@@ -50,7 +50,7 @@ void Trainer::runIterations(int n, Trainer& a, Trainer& b) {
 	std::cout << "Done" << std::endl;
 }
 
-void Trainer::updateQ(const StateAction& sa, double ret) {
+void TTT_Trainer::updateQ(const TTT_StateAction& sa, double ret) {
 	if (Q.find(sa) == Q.end()) {
 		Q[sa] = ret;
 		Q_count[sa] = 1;
@@ -61,15 +61,15 @@ void Trainer::updateQ(const StateAction& sa, double ret) {
 	Q_count[sa] = Q_count[sa] + 1;
 }
 
-double Trainer::random_start() {
+double TTT_Trainer::random_start() {
 	return ((rand() % 1000000) / 1000000.0) * 0.1;
 }
 
-int Trainer::Pi(TicTacToe& b) {
+int TTT_Trainer::Pi(TTT_TicTacToe& b) {
 	int bestCell = -1;
 	double bestWeight = -1;
 	for (int i = 0; i < 9; ++i) {
-		StateAction sa(b, i);
+		TTT_StateAction sa(b, i);
 		double weight = (Q.find(sa) == Q.end()) ? random_start() : Q[sa];
 		if (weight > bestWeight) {
 			bestCell = i;
@@ -100,10 +100,10 @@ int Trainer::Pi(TicTacToe& b) {
 	return pick_random(probs);
 }
 
-std::pair<Trainer::Episode, Trainer::Episode> Trainer::genEpisode(Trainer& p1, Trainer& p2)
+std::pair<TTT_Trainer::Episode, TTT_Trainer::Episode> TTT_Trainer::genEpisode(TTT_Trainer& p1, TTT_Trainer& p2)
 {
 	struct Episode e1, e2;
-	TicTacToe b;
+	TTT_TicTacToe b;
 	int i = 0;
 	for (;;) {
 		bool validMove = false;
@@ -111,14 +111,14 @@ std::pair<Trainer::Episode, Trainer::Episode> Trainer::genEpisode(Trainer& p1, T
 			int a = p1.Pi(b);
 			if (b.isValidMove(a / 3, a % 3)) {
 				validMove = true;
-				StateAction sa = StateAction(b, a);
+				TTT_StateAction sa = TTT_StateAction(b, a);
 				b.place(a / 3, a % 3);
 				e1.sas.push_back(sa);
 			}
 		} while (!validMove);
 
 		if (b.getAllValidMoves().size() == 0) {
-			if (b.getWinner() != NONE) {
+			if (b.getWinner() != TTT_TicTacToe::Piece::NONE) {
 				e1.result = WIN;
 				e2.result = LOSS;
 			}
@@ -134,14 +134,14 @@ std::pair<Trainer::Episode, Trainer::Episode> Trainer::genEpisode(Trainer& p1, T
 			int a = p2.Pi(b); 
 			if (b.isValidMove(a / 3, a % 3)) {
 				validMove = true;
-				StateAction sa = StateAction(b, a);
+				TTT_StateAction sa = TTT_StateAction(b, a);
 				b.place(a / 3, a % 3);
 				e2.sas.push_back(sa);
 			}
 		} while (!validMove);
 
 		if (b.getAllValidMoves().size() == 0) {
-			if (b.getWinner() != NONE) {
+			if (b.getWinner() != TTT_TicTacToe::Piece::NONE) {
 				e1.result = LOSS;
 				e2.result = WIN;
 			} else {
@@ -154,7 +154,7 @@ std::pair<Trainer::Episode, Trainer::Episode> Trainer::genEpisode(Trainer& p1, T
 	}
 }
 
-int Trainer::pick_random(std::vector<std::pair<int, double> >& probs) {
+int TTT_Trainer::pick_random(std::vector<std::pair<int, double> >& probs) {
 	double roll = ((rand() % 1000000) / 1000000.0);
 
 	std::vector<std::pair<int, double> >::reverse_iterator iter = probs.rbegin();
@@ -167,7 +167,7 @@ int Trainer::pick_random(std::vector<std::pair<int, double> >& probs) {
 
 	return probs[0].first;
 }
-int Trainer::random_action() {
+int TTT_Trainer::random_action() {
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, 9 - 1);
@@ -175,9 +175,9 @@ int Trainer::random_action() {
 }
 
 
-void Trainer::updateQFromEpisode(struct Episode e) {
+void TTT_Trainer::updateQFromEpisode(struct Episode e) {
 	int i = 0;
-	for (std::list<StateAction>::iterator it = e.sas.begin(); it != e.sas.end(); ++it) {
+	for (std::list<TTT_StateAction>::iterator it = e.sas.begin(); it != e.sas.end(); ++it) {
 		double weight = 0;
 		if (e.result == WIN)
 			weight = WIN_WEIGHT;

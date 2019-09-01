@@ -19,15 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StateAction.h" />
-    <ClInclude Include="TicTacToe.h" />
-    <ClInclude Include="Trainer.h" />
+    <ClInclude Include="Check_Checkers.h" />
+    <ClInclude Include="TTT_StateAction.h" />
+    <ClInclude Include="TTT_TicTacToe.h" />
+    <ClInclude Include="TTT_Trainer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Check_Checkers.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="StateAction.cpp" />
-    <ClCompile Include="TicTacToe.cpp" />
-    <ClCompile Include="Trainer.cpp" />
+    <ClCompile Include="TTT_StateAction.cpp" />
+    <ClCompile Include="TTT_TicTacToe.cpp" />
+    <ClCompile Include="TTT_Trainer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
