@@ -15,31 +15,31 @@ void TTT_Trainer::runIterations(int n, TTT_Trainer& a, TTT_Trainer& b) {
 	int p2lossCount = 0;
 	for (int i = 0; i < n; ++i) {
 		if (i % 100 == 0) {
-			srand(time(nullptr));// Mayyyyyyy mayyy mayyy mayyy
+			srand(time(nullptr));
 		}
 		//std::cout << i << "\r";
 		std::pair<TTT_Trainer::Episode, TTT_Trainer::Episode> e = genEpisode(a, b);
-		if (e.first.result == WIN)// Mayyyyyyy mayyy mayyy mayyy
-			p1winCount++;// Mayyyyyyy mayyy mayyy mayyy
-		if (e.first.result == TIE)// Mayyyyyyy mayyy mayyy mayyy
-			p1tieCount++;// Mayyyyyyy mayyy mayyy mayyy
-		if (e.first.result == LOSS)// Mayyyyyyy mayyy mayyy mayyy
-			p1lossCount++;// Mayyyyyyy mayyy mayyy mayyy
-		if (e.second.result == WIN)// Mayyyyyyy mayyy mayyy mayyy
-			p2winCount++;// Mayyyyyyy mayyy mayyy mayyy
-		if (e.second.result == TIE)// Mayyyyyyy mayyy mayyy mayyy
-			p2tieCount++;// Mayyyyyyy mayyy mayyy mayyy
-		if (e.second.result == LOSS) // my nAME IS marcel and i would like to say hi to the big chungus 
-			p2lossCount++;// Mayyyyyyy mayyy mayyy mayyy
-		a.updateQFromEpisode(e.first); // // Mayyyyyyy mayyy mayyy mayyy
-		b.updateQFromEpisode(e.second); // youre fucking dumb
-		int sizeStep = 25000; // and really fcking lame
-		if (i >= sizeStep && i % sizeStep == 0) { // Mayyyyyyy mayyy mayyy mayyy
+		if (e.first.result == WIN)
+			p1winCount++;
+		if (e.first.result == TIE)
+			p1tieCount++;
+		if (e.first.result == LOSS)
+			p1lossCount++;
+		if (e.second.result == WIN)
+			p2winCount++;
+		if (e.second.result == TIE)
+			p2tieCount++;
+		if (e.second.result == LOSS) 
+			p2lossCount++;
+		a.updateQFromEpisode(e.first);
+		b.updateQFromEpisode(e.second);
+		int sizeStep = 25000;
+		if (i >= sizeStep && i % sizeStep == 0) {
 			std::cout << "P1 Iteration: " << i << "\tWin %: " << ((double)p1winCount / (double)(sizeStep)) * 100 << "\tTie %: " << ((double)p1tieCount / (double)(sizeStep)) * 100 << "\tLoss %: " << ((double)p1lossCount / (double)(sizeStep)) * 100 << "\tState/Action Pairs Tracked: " << a.Q.size() << "\n";
 			std::cout << "P2 Iteration: " << i << "\tWin %: " << ((double)p2winCount / (double)(sizeStep)) * 100 << "\tTie %: " << ((double)p2tieCount / (double)(sizeStep)) * 100 << "\tLoss %: " << ((double)p2lossCount / (double)(sizeStep)) * 100 << "\tState/Action Pairs Tracked: " << b.Q.size() << "\n";
-			p1winCount = 0;// Mayyyyyyy mayyy mayyy mayyy
+			p1winCount = 0;
 			p1tieCount = 0;
-			p1lossCount = 0;// Mayyyyyyy mayyy mayyy mayyy
+			p1lossCount = 0;
 			p2winCount = 0;
 			p2tieCount = 0;
 			p2lossCount = 0;
